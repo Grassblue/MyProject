@@ -1,20 +1,18 @@
-package com.ldq.myproject.ui.activity;
+package com.ldq.myproject;
 
-import android.app.ActionBar;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ldq.myproject.R;
 import com.ldq.myproject.ui.fragment.JokeFragment;
 import com.ldq.myproject.ui.fragment.NewsFragment;
 import com.ldq.myproject.ui.fragment.PersonFragment;
@@ -23,7 +21,6 @@ import com.ldq.myproject.ui.widget.BottomNavigationViewEx;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.content)
