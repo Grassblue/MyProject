@@ -3,7 +3,7 @@
     android:id="@+id/empty_cart_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffefebe7">
+    android:background="@color/person_bg">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,341 +20,293 @@
             android:paddingRight="10.0dip"
             android:paddingTop="10.0dip">
 
-            <LinearLayout
+            <TableLayout
+                android:id="@+id/table_info"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:shrinkColumns="0"
+                android:stretchColumns="0">
 
-                <TableLayout
-                    android:id="@+id/MorePageTableLayout_Favorite"
+                <TableRow
+                    android:id="@+id/row_personIc"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:shrinkColumns="0"
-                    android:stretchColumns="5">
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginRight="2.0dip"
+                    android:background="@color/white"
+                    android:paddingBottom="8.0dip"
+                    android:paddingTop="8.0dip">
 
-                    <TableRow
-                        android:id="@+id/more_page_row0"
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="2.0dip"
-                        android:layout_marginRight="2.0dip"
-                        android:background="@color/white"
-                        android:paddingBottom="8.0dip"
-                        android:paddingTop="8.0dip">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="90dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/ic_photo" />
+                </TableRow>
 
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="8dp"
-                            android:src="@mipmap/ic_photo" />
+                <TableRow
+                    android:id="@+id/row_personName"
+                    android:layout_width="match_parent"
+                    android:background="@color/white">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:drawableLeft="@color/white"
-                            android:drawablePadding="10.0dip"
-                            android:includeFontPadding="false"
-                            android:paddingLeft="17.0dip"
-                            android:paddingTop="15dp"
-                            android:text="xxxxxxxxxxxxxxxxxxxxxx"
-                            android:textColor="#ff333333"
-                            android:textSize="16.0sp" />
-
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="20dp"
-                            android:src="@mipmap/more" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorPrimaryDark"
-                        android:padding="16dp">
+                        android:background="@color/white"
+                        android:drawableLeft="@color/white"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:paddingLeft="17.0dip"
+                        android:text="111111"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/small_textSize" />
+                </TableRow>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="消息"
-                            android:textSize="16sp" />
+                <!--<TableRow-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/colorPrimaryDark"-->
+                    <!--android:padding="16dp">-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="收藏"
-                            android:textSize="16sp" />
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="消息"-->
+                        <!--android:textSize="@dimen/small_textSize" />-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="收藏"
-                            android:textSize="16sp" />
-                    </TableRow>
-                </TableLayout>
-            </LinearLayout>
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="收藏"-->
+                        <!--android:textSize="@dimen/small_textSize" />-->
 
-            <TextView
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="分享"-->
+                        <!--android:textSize="@dimen/small_textSize" />-->
+                <!--</TableRow>-->
+            </TableLayout>
+
+            <TableLayout
+                android:id="@+id/MorePageTableLayout_Follow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10.0dip"
-                android:layout_marginTop="10.0dip"
-                android:gravity="center_vertical"
-                android:paddingLeft="4.0dip"
-                android:text="我的设置"
-                android:textColor="#ff888888"
-                android:textSize="16.0sp" />
+                android:layout_marginTop="8.0dip"
+                android:paddingLeft="1.0dip"
+                android:shrinkColumns="0"
+                android:stretchColumns="0">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TableLayout
-                    android:id="@+id/MorePageTableLayout_Follow"
+                <TableRow
+                    android:id="@+id/more_page_row1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="1.0dip"
-                    android:shrinkColumns="0"
-                    android:stretchColumns="0">
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginRight="2.0dip"
+                    android:background="@mipmap/bg_tablerow"
+                    android:paddingBottom="16.0dip">
 
-                    <TableRow
-                        android:id="@+id/more_page_row1"
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="2.0dip"
-                        android:layout_marginRight="2.0dip"
-                        android:background="@color/white"
-                        android:paddingBottom="16.0dip"
-                        android:paddingTop="16.0dip">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@mipmap/dib"
+                        android:drawablePadding="10.0dip"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:paddingLeft="17.0dip"
+                        android:text="我的帐号"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/small_textSize" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:drawableLeft="@mipmap/dib"
-                            android:drawablePadding="10.0dip"
-                            android:gravity="center_vertical"
-                            android:includeFontPadding="false"
-                            android:paddingLeft="17.0dip"
-                            android:text="账号管理"
-                            android:textColor="#ff333333"
-                            android:textSize="16.0sp" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/more" />
+                </TableRow>
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="20dp"
-                            android:src="@mipmap/more" />
-                    </TableRow>
+                <TableRow
+                    android:id="@+id/more_page_row2"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginRight="2.0dip"
+                    android:background="@mipmap/bg_tablerow"
+                    android:paddingBottom="16.0dip"
+                    android:paddingTop="16.0dip">
 
-                    <TableRow
-                        android:id="@+id/more_page_row2"
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="2.0dip"
-                        android:layout_marginRight="2.0dip"
-                        android:background="@color/white"
-                        android:paddingBottom="16.0dip"
-                        android:paddingTop="16.0dip">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@mipmap/dfx"
+                        android:drawablePadding="10.0dip"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:paddingLeft="17.0dip"
+                        android:text="我的爱好"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/small_textSize" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:drawableLeft="@mipmap/dfx"
-                            android:drawablePadding="10.0dip"
-                            android:gravity="center_vertical"
-                            android:includeFontPadding="false"
-                            android:paddingLeft="17.0dip"
-                            android:text="个人爱好"
-                            android:textColor="#ff333333"
-                            android:textSize="16.0sp" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/more" />
+                </TableRow>
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="20dp"
-                            android:src="@mipmap/more" />
-                    </TableRow>
+                <TableRow
+                    android:id="@+id/more_page_row3"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginRight="2.0dip"
+                    android:background="@mipmap/bg_tablerow"
+                    android:paddingBottom="16.0dip"
+                    android:paddingTop="16.0dip">
 
-                    <TableRow
-                        android:id="@+id/more_page_row3"
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="2.0dip"
-                        android:layout_marginRight="2.0dip"
-                        android:background="@color/white"
-                        android:paddingBottom="16.0dip"
-                        android:paddingTop="16.0dip">
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@mipmap/dhp"
+                        android:drawablePadding="10.0dip"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:paddingLeft="17.0dip"
+                        android:text="浏览记录"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/small_textSize" />
 
-                        <TextView
-                            android:id="@+id/textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:drawableLeft="@mipmap/dhp"
-                            android:drawablePadding="10.0dip"
-                            android:gravity="center_vertical"
-                            android:includeFontPadding="false"
-                            android:paddingLeft="17.0dip"
-                            android:text="浏览记录"
-                            android:textColor="#ff333333"
-                            android:textSize="16.0sp" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/more" />
+                </TableRow>
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="20dp"
-                            android:src="@mipmap/more" />
-                    </TableRow>
-                </TableLayout>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10.0dip"
-                android:layout_marginTop="10.0dip"
-                android:gravity="center_vertical"
-                android:paddingLeft="4.0dip"
-                android:text="客户端"
-                android:textColor="#ff888888"
-                android:textSize="16.0sp" />
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-
-                <TableLayout
-                    android:id="@+id/MorePageTableLayout_Client"
+                <TableRow
+                    android:id="@+id/more_page_row4"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="1.0dip"
-                    android:shrinkColumns="0"
-                    android:stretchColumns="0">
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginRight="2.0dip"
+                    android:background="@mipmap/bg_tablerow"
+                    android:paddingBottom="16.0dip"
+                    android:paddingTop="16.0dip">
 
-                    <TableRow
-                        android:id="@+id/more_page_row4"
-                        android:layout_width="fill_parent"
-                        android:layout_marginLeft="2.0dip"
-                        android:layout_marginRight="2.0dip"
-                        android:background="@color/white"
-                        android:paddingBottom="16.0dip"
-                        android:paddingTop="16.0dip">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:drawableLeft="@mipmap/moy"
+                        android:drawablePadding="10.0dip"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:paddingLeft="17.0dip"
+                        android:text="设置"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/small_textSize" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
-                            android:drawableLeft="@mipmap/moy"
-                            android:drawablePadding="10.0dip"
-                            android:gravity="center_vertical"
-                            android:includeFontPadding="false"
-                            android:paddingLeft="17.0dip"
-                            android:text="设置"
-                            android:textColor="#ff333333"
-                            android:textSize="16.0sp" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/more" />
+                </TableRow>
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="20dp"
-                            android:src="@mipmap/more" />
-                    </TableRow>
+                <TableRow
+                    android:id="@+id/more_page_row5"
+                    android:layout_width="fill_parent"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginRight="2.0dip"
+                    android:background="@mipmap/bg_tablerow"
+                    android:paddingBottom="16.0dip"
+                    android:paddingTop="16.0dip">
 
-                    <TableRow
-                        android:id="@+id/more_page_row5"
-                        android:layout_width="fill_parent"
-                        android:layout_marginLeft="2.0dip"
-                        android:layout_marginRight="2.0dip"
-                        android:background="@color/white"
-                        android:paddingBottom="16.0dip"
-                        android:paddingTop="16.0dip">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:drawableLeft="@mipmap/dfy"
+                        android:drawablePadding="10.0dip"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:paddingLeft="17.0dip"
+                        android:text="意见反馈"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/small_textSize" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
-                            android:drawableLeft="@mipmap/dfy"
-                            android:drawablePadding="10.0dip"
-                            android:gravity="center_vertical"
-                            android:includeFontPadding="false"
-                            android:paddingLeft="17.0dip"
-                            android:text="意见反馈"
-                            android:textColor="#ff333333"
-                            android:textSize="16.0sp" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/more" />
+                </TableRow>
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="20dp"
-                            android:src="@mipmap/more" />
-                    </TableRow>
+                <TableRow
+                    android:id="@+id/more_page_row6"
+                    android:layout_width="fill_parent"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginRight="2.0dip"
+                    android:background="@mipmap/bg_tablerow"
+                    android:paddingBottom="16.0dip"
+                    android:paddingTop="16.0dip">
 
-                    <TableRow
-                        android:id="@+id/more_page_row6"
-                        android:layout_width="fill_parent"
-                        android:layout_marginLeft="2.0dip"
-                        android:layout_marginRight="2.0dip"
-                        android:background="@mipmap/ttttttt"
-                        android:paddingBottom="16.0dip"
-                        android:paddingTop="16.0dip">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:drawableLeft="@mipmap/dib"
+                        android:drawablePadding="10.0dip"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:paddingLeft="17.0dip"
+                        android:text="检测更新"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/small_textSize" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
-                            android:drawableLeft="@mipmap/dib"
-                            android:drawablePadding="10.0dip"
-                            android:gravity="center_vertical"
-                            android:includeFontPadding="false"
-                            android:paddingLeft="17.0dip"
-                            android:text="检测更新"
-                            android:textColor="#ff333333"
-                            android:textSize="16.0sp" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/more" />
+                </TableRow>
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="20dp"
-                            android:src="@mipmap/more" />
-                    </TableRow>
+                <TableRow
+                    android:id="@+id/more_page_row7"
+                    android:layout_width="fill_parent"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginRight="2.0dip"
+                    android:background="@mipmap/bg_tablerow"
+                    android:paddingBottom="16.0dip"
+                    android:paddingTop="16.0dip">
 
-                    <TableRow
-                        android:id="@+id/more_page_row7"
-                        android:layout_width="fill_parent"
-                        android:layout_marginLeft="2.0dip"
-                        android:layout_marginRight="2.0dip"
-                        android:background="@mipmap/ttttttt"
-                        android:paddingBottom="16.0dip"
-                        android:paddingTop="16.0dip">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:drawableLeft="@mipmap/dif"
+                        android:drawablePadding="10.0dip"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:paddingLeft="17.0dip"
+                        android:text="关于我们"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/small_textSize" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
-                            android:drawableLeft="@mipmap/dif"
-                            android:drawablePadding="10.0dip"
-                            android:gravity="center_vertical"
-                            android:includeFontPadding="false"
-                            android:paddingLeft="17.0dip"
-                            android:text="关于我们"
-                            android:textColor="#ff333333"
-                            android:textSize="16.0sp" />
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="20dp"
-                            android:src="@mipmap/more" />
-                    </TableRow>
-                </TableLayout>
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/more" />
+                </TableRow>
+            </TableLayout>
         </LinearLayout>
     </ScrollView>
 

@@ -8,7 +8,7 @@
         android:id="@+id/tv_jokeContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="@dimen/middle_textSize"
         android:layout_gravity="center"
         android:padding="24dp"/>
 </android.support.v7.widget.CardView>

@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="@dimen/textSize_news"
+        android:textSize="@dimen/middle_textSize"
         android:background="#5fff"
         android:layout_toRightOf="@id/img_news"/>
 </RelativeLayout>

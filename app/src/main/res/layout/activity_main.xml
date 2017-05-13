@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
+                android:textSize="@dimen/big_textSize"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:maxWidth="200dp"
