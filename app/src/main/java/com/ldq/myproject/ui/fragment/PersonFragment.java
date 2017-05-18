@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.ldq.myproject.R;
+import com.ldq.myproject.common.Constant;
+import com.ldq.myproject.common.PreferencesManager;
 import com.ldq.myproject.ui.activity.LoginActivity;
 
 import butterknife.BindView;
@@ -28,14 +31,16 @@ public class PersonFragment extends Fragment {
     ImageView imgIcon;
     @BindView(R.id.tv_uname)
     TextView tvUname;
+    @BindView(R.id.tv_login)
+    TextView tvLogin;
     @BindView(R.id.tv_myInfo)
     TextView tvMyInfo;
     @BindView(R.id.tr1_myInfo)
     TableRow tr1MyInfo;
-    @BindView(R.id.tv_myLove)
-    TextView tvMyLove;
-    @BindView(R.id.tr2_myLove)
-    TableRow tr2MyLove;
+    @BindView(R.id.tv_myCollect)
+    TextView tvMyCollect;
+    @BindView(R.id.tr2_myCollect)
+    TableRow tr2MyCollect;
     @BindView(R.id.tv_history)
     TextView tvHistory;
     @BindView(R.id.tr3_history)
@@ -64,20 +69,38 @@ public class PersonFragment extends Fragment {
         return rootView;
     }
 
+    private void initData() {
+       if(PreferencesManager.getInstance(getActivity()).get(Constant.IS_LOGIN,false)){
+           tvUname.setVisibility(View.VISIBLE);
+           tvLogin.setVisibility(View.GONE);
+           loadUserInfo();
+       }else{
+           tvUname.setVisibility(View.GONE);
+           tvLogin.setVisibility(View.VISIBLE);
+       }
+    }
+
+    private void loadUserInfo() {
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
 
-    @OnClick({R.id.tr1_myInfo, R.id.tr2_myLove, R.id.tr3_history, R.id.tr4_setting, R.id.tr5_advice, R.id.tr6_about})
+    @OnClick({R.id.img_icon, R.id.tv_login,R.id.tr1_myInfo, R.id.tr2_myCollect, R.id.tr3_history, R.id.tr4_setting, R.id.tr5_advice, R.id.tr6_about})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.img_icon:
+                break;
+            case R.id.tv_login:
+                break;
             case R.id.tr1_myInfo:
                 intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.tr2_myLove:
+            case R.id.tr2_myCollect:
                 break;
             case R.id.tr3_history:
                 break;
@@ -86,7 +109,17 @@ public class PersonFragment extends Fragment {
             case R.id.tr5_advice:
                 break;
             case R.id.tr6_about:
+                showAppInfo();
                 break;
         }
     }
+
+    private void showAppInfo() {
+        AlertDialog.Builder builer = new AlertDialog.Builder(getActivity())
+                .setTitle("关于我们")
+                .setMessage("开发人:Grassblue\n地址:https://github.com/Grassblue/MyProject")
+                .setPositiveButton("确定", null);
+        builer.create().show();
+    }
+
 }

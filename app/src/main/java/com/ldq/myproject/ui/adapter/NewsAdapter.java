@@ -57,8 +57,8 @@ public class NewsAdapter extends BaseAdapter{
         Glide.with(parent.getContext())
                 .load(data.get(position).getThumbnail_pic_s())
                 .centerCrop()
-                .placeholder(R.mipmap.aio_image_default_round)
-                .error(R.mipmap.aio_image_fail_round)
+                .placeholder(R.mipmap.ic_img_default)
+                .error(R.mipmap.ic_img_fail)
                 .crossFade()
                 .into(holder.img_news);
         holder.tv_title.setText(data.get(position).getTitle());

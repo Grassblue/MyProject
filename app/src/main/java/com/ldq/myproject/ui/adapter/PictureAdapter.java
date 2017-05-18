@@ -40,8 +40,8 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.MyViewHo
         Glide.with(context)
                 .load(data.get(position).getList().get(0).getBig())
                 .centerCrop()
-                .placeholder(R.mipmap.aio_image_default_round)
-                .error(R.mipmap.aio_image_fail_round)
+                .placeholder(R.mipmap.ic_img_default)
+                .error(R.mipmap.ic_img_fail)
                 .crossFade()
                 .into(holder.imageView);
         holder.tv_title.setText(data.get(position).getTitle());

@@ -10,6 +10,8 @@
     <color name="mediumseagreen">#3CB371</color><!--中海蓝 -->
 
     <drawable name="transparent_8f">#8f000000</drawable>
+    <color name="grey">#dbdbdb</color>
+    <color name="gray">#bfbfbf</color>
 
     <color name="pinkNormal">#aa77dd</color>
     <color name="pinkDark">#6040a0</color>

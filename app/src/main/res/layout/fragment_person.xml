@@ -1,243 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/person_bg">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/person_bg"
+    android:fadingEdge="none">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fadingEdge="none">
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingBottom="60.0dip"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip"
+        android:paddingTop="10.0dip">
 
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:paddingBottom="60.0dip"
-            android:paddingLeft="10.0dip"
-            android:paddingRight="10.0dip"
-            android:paddingTop="10.0dip">
+            android:background="@drawable/transparent_8f"
+            android:shrinkColumns="0"
+            android:stretchColumns="0">
 
-            <TableLayout
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:shrinkColumns="0"
-                android:stretchColumns="0"
-                android:background="@mipmap/ic_bg">
+                android:gravity="center"
+                android:paddingTop="24.0dip">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:paddingTop="24.0dip">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_icon"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    app:civ_border_width = "2dp"
+                    app:civ_border_color = "@color/white"
+                    android:src="@mipmap/ic_photo" />
+            </TableRow>
 
-                    <ImageView
-                        android:id="@+id/img_icon"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/ic_photo" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:paddingTop="16.0dip">
-
-                    <TextView
-                        android:id="@+id/tv_uname"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:drawableLeft="@color/white"
-                        android:includeFontPadding="false"
-                        android:text="HelloHello"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/small_textSize" />
-                </TableRow>
-            </TableLayout>
-
-            <TableLayout
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8.0dip"
-                android:paddingLeft="1.0dip"
-                android:shrinkColumns="0"
-                android:stretchColumns="0">
+                android:gravity="center"
+                android:paddingTop="16.0dip">
 
-                <TableRow
-                    android:id="@+id/tr1_myInfo"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="2.0dip"
-                    android:layout_marginRight="2.0dip"
-                    android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="8.0dip"
-                    android:paddingTop="8.0dip">
+                <TextView
+                    android:id="@+id/tv_uname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@color/white"
+                    android:includeFontPadding="false"
+                    android:text="HelloHello"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_textSize"
+                    android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/tv_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="登录"
+                    android:textSize="@dimen/small_textSize"
+                    android:textColor="@color/white"/>
+            </TableRow>
+        </TableLayout>
 
-                    <TextView
-                        android:id="@+id/tv_myInfo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:drawablePadding="10.0dip"
-                        android:gravity="center_vertical"
-                        android:includeFontPadding="false"
-                        android:paddingLeft="17.0dip"
-                        android:text="我的帐号"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/small_textSize" />
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8.0dip"
+            android:paddingLeft="1.0dip"
+            android:shrinkColumns="0"
+            android:stretchColumns="0">
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="20dp"
-                        android:src="@mipmap/more" />
-                </TableRow>
+            <TableRow
+                android:id="@+id/tr1_myInfo"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/bg_tablerow"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip">
 
-                <TableRow
-                    android:id="@+id/tr2_myLove"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="2.0dip"
-                    android:layout_marginRight="2.0dip"
-                    android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="8.0dip"
-                    android:paddingTop="8.0dip">
+                <TextView
+                    android:id="@+id/tv_myInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="我的帐号"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_textSize" />
 
-                    <TextView
-                        android:id="@+id/tv_myLove"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:drawablePadding="10.0dip"
-                        android:gravity="center_vertical"
-                        android:includeFontPadding="false"
-                        android:paddingLeft="17.0dip"
-                        android:text="我的爱好"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/small_textSize" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/more" />
+            </TableRow>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="20dp"
-                        android:src="@mipmap/more" />
-                </TableRow>
+            <TableRow
+                android:id="@+id/tr2_myCollect"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/bg_tablerow"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip">
 
-                <TableRow
-                    android:id="@+id/tr3_history"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="2.0dip"
-                    android:layout_marginRight="2.0dip"
-                    android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="8.0dip"
-                    android:paddingTop="8.0dip">
+                <TextView
+                    android:id="@+id/tv_myCollect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="我的收藏"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_textSize" />
 
-                    <TextView
-                        android:id="@+id/tv_history"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:drawablePadding="10.0dip"
-                        android:gravity="center_vertical"
-                        android:includeFontPadding="false"
-                        android:paddingLeft="17.0dip"
-                        android:text="浏览记录"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/small_textSize" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/more" />
+            </TableRow>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="20dp"
-                        android:src="@mipmap/more" />
-                </TableRow>
+            <TableRow
+                android:id="@+id/tr3_history"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/bg_tablerow"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip">
 
-                <TableRow
-                    android:id="@+id/tr4_setting"
-                    android:layout_width="fill_parent"
-                    android:layout_marginLeft="2.0dip"
-                    android:layout_marginRight="2.0dip"
-                    android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="8.0dip"
-                    android:paddingTop="8.0dip">
+                <TextView
+                    android:id="@+id/tv_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="浏览记录"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_textSize" />
 
-                    <TextView
-                        android:id="@+id/tv_setting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:drawablePadding="10.0dip"
-                        android:gravity="center_vertical"
-                        android:includeFontPadding="false"
-                        android:paddingLeft="17.0dip"
-                        android:text="设置"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/small_textSize" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/more" />
+            </TableRow>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="20dp"
-                        android:src="@mipmap/more" />
-                </TableRow>
+            <TableRow
+                android:id="@+id/tr4_setting"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/bg_tablerow"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip">
 
-                <TableRow
-                    android:id="@+id/tr5_advice"
-                    android:layout_width="fill_parent"
-                    android:layout_marginLeft="2.0dip"
-                    android:layout_marginRight="2.0dip"
-                    android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="8.0dip"
-                    android:paddingTop="8.0dip">
+                <TextView
+                    android:id="@+id/tv_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="设置"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_textSize" />
 
-                    <TextView
-                        android:id="@+id/tv_advice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:drawablePadding="10.0dip"
-                        android:gravity="center_vertical"
-                        android:includeFontPadding="false"
-                        android:paddingLeft="17.0dip"
-                        android:text="意见反馈"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/small_textSize" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/more" />
+            </TableRow>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="20dp"
-                        android:src="@mipmap/more" />
-                </TableRow>
+            <TableRow
+                android:id="@+id/tr5_advice"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/bg_tablerow"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip">
 
-                <TableRow
-                    android:id="@+id/tr6_about"
-                    android:layout_width="fill_parent"
-                    android:layout_marginLeft="2.0dip"
-                    android:layout_marginRight="2.0dip"
-                    android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="8.0dip"
-                    android:paddingTop="8.0dip">
+                <TextView
+                    android:id="@+id/tv_advice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="意见反馈"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_textSize" />
 
-                    <TextView
-                        android:id="@+id/tv_about"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:drawablePadding="10.0dip"
-                        android:gravity="center_vertical"
-                        android:includeFontPadding="false"
-                        android:paddingLeft="17.0dip"
-                        android:text="关于我们"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/small_textSize" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/more" />
+            </TableRow>
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="20dp"
-                        android:src="@mipmap/more" />
-                </TableRow>
-            </TableLayout>
-        </LinearLayout>
-    </ScrollView>
+            <TableRow
+                android:id="@+id/tr6_about"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/bg_tablerow"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip">
 
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="关于我们"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/small_textSize" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/more" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>
