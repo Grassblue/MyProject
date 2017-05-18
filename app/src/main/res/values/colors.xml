@@ -2,12 +2,12 @@
 <resources>
     <color name="colorPrimary">#55bb88</color>
     <color name="colorPrimaryDark">#33aa66</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#66cc99</color>
     <color name="white">#ffffff</color>
     <color name="person_bg">#ffefebe7</color>
     <color name="black">#ff333333</color>
-
-    <color name="drivider_line">#b6b6b6</color>
+    <color name="mediumaquamarine">#66CDAA</color><!--中绿色 -->
+    <color name="mediumseagreen">#3CB371</color><!--中海蓝 -->
 
     <drawable name="transparent_8f">#8f000000</drawable>
 
@@ -16,8 +16,6 @@
 
     <color name="greenLight">#66cc99</color>
     <color name="lightgreen">#90EE90</color><!--亮绿色 -->
-    <color name="mediumaquamarine">#66CDAA</color><!--中绿色 -->
-    <color name="mediumseagreen">#3CB371</color><!--中海蓝 -->
     <color name="teal">#008080</color><!--水鸭色 -->
 
     <color name="ivory">#FFFFF0</color><!--象牙色 -->

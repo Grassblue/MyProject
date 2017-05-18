@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/empty_cart_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/person_bg">
@@ -21,75 +20,42 @@
             android:paddingTop="10.0dip">
 
             <TableLayout
-                android:id="@+id/table_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:shrinkColumns="0"
-                android:stretchColumns="0">
+                android:stretchColumns="0"
+                android:background="@mipmap/ic_bg">
 
                 <TableRow
-                    android:id="@+id/row_personIc"
                     android:layout_width="match_parent"
-                    android:background="@color/white">
+                    android:paddingTop="24.0dip">
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:id="@+id/img_icon"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_gravity="center"
                         android:src="@mipmap/ic_photo" />
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/row_personName"
                     android:layout_width="match_parent"
-                    android:background="@color/white">
+                    android:paddingTop="16.0dip">
 
                     <TextView
+                        android:id="@+id/tv_uname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:background="@color/white"
                         android:drawableLeft="@color/white"
                         android:includeFontPadding="false"
-                        android:text="111111"
+                        android:text="HelloHello"
                         android:textColor="@color/black"
                         android:textSize="@dimen/small_textSize" />
                 </TableRow>
-
-                <!--<TableRow-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:background="@color/colorPrimaryDark"-->
-                    <!--android:padding="16dp">-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="消息"-->
-                        <!--android:textSize="@dimen/small_textSize" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="收藏"-->
-                        <!--android:textSize="@dimen/small_textSize" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="分享"-->
-                        <!--android:textSize="@dimen/small_textSize" />-->
-                <!--</TableRow>-->
             </TableLayout>
 
             <TableLayout
-                android:id="@+id/MorePageTableLayout_Follow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8.0dip"
@@ -98,14 +64,16 @@
                 android:stretchColumns="0">
 
                 <TableRow
-                    android:id="@+id/more_page_row1"
+                    android:id="@+id/tr1_myInfo"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="2.0dip"
                     android:layout_marginRight="2.0dip"
                     android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="16.0dip">
+                    android:paddingBottom="8.0dip"
+                    android:paddingTop="8.0dip">
 
                     <TextView
+                        android:id="@+id/tv_myInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:drawablePadding="10.0dip"
@@ -125,15 +93,16 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/more_page_row2"
+                    android:id="@+id/tr2_myLove"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="2.0dip"
                     android:layout_marginRight="2.0dip"
                     android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="16.0dip"
-                    android:paddingTop="16.0dip">
+                    android:paddingBottom="8.0dip"
+                    android:paddingTop="8.0dip">
 
                     <TextView
+                        android:id="@+id/tv_myLove"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:drawablePadding="10.0dip"
@@ -153,16 +122,16 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/more_page_row3"
+                    android:id="@+id/tr3_history"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="2.0dip"
                     android:layout_marginRight="2.0dip"
                     android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="16.0dip"
-                    android:paddingTop="16.0dip">
+                    android:paddingBottom="8.0dip"
+                    android:paddingTop="8.0dip">
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/tv_history"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:drawablePadding="10.0dip"
@@ -182,15 +151,16 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/more_page_row4"
+                    android:id="@+id/tr4_setting"
                     android:layout_width="fill_parent"
                     android:layout_marginLeft="2.0dip"
                     android:layout_marginRight="2.0dip"
                     android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="16.0dip"
-                    android:paddingTop="16.0dip">
+                    android:paddingBottom="8.0dip"
+                    android:paddingTop="8.0dip">
 
                     <TextView
+                        android:id="@+id/tv_setting"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:drawablePadding="10.0dip"
@@ -210,15 +180,16 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/more_page_row5"
+                    android:id="@+id/tr5_advice"
                     android:layout_width="fill_parent"
                     android:layout_marginLeft="2.0dip"
                     android:layout_marginRight="2.0dip"
                     android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="16.0dip"
-                    android:paddingTop="16.0dip">
+                    android:paddingBottom="8.0dip"
+                    android:paddingTop="8.0dip">
 
                     <TextView
+                        android:id="@+id/tv_advice"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:drawablePadding="10.0dip"
@@ -238,43 +209,16 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/more_page_row6"
+                    android:id="@+id/tr6_about"
                     android:layout_width="fill_parent"
                     android:layout_marginLeft="2.0dip"
                     android:layout_marginRight="2.0dip"
                     android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="16.0dip"
-                    android:paddingTop="16.0dip">
+                    android:paddingBottom="8.0dip"
+                    android:paddingTop="8.0dip">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:drawablePadding="10.0dip"
-                        android:gravity="center_vertical"
-                        android:includeFontPadding="false"
-                        android:paddingLeft="17.0dip"
-                        android:text="检测更新"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/small_textSize" />
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="20dp"
-                        android:src="@mipmap/more" />
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/more_page_row7"
-                    android:layout_width="fill_parent"
-                    android:layout_marginLeft="2.0dip"
-                    android:layout_marginRight="2.0dip"
-                    android:background="@mipmap/bg_tablerow"
-                    android:paddingBottom="16.0dip"
-                    android:paddingTop="16.0dip">
-
-                    <TextView
+                        android:id="@+id/tv_about"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:drawablePadding="10.0dip"

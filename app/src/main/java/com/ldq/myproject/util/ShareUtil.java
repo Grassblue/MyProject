@@ -12,7 +12,7 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 
 public class ShareUtil {
 
-   public static void showShare(Context context,String title,String url,String content,String imageurl) {
+   public static void showShare(Context context, String 笑话, String title, String url, String content, String imageurl) {
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
         oks.disableSSOWhenAuthorize();

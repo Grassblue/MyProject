@@ -114,8 +114,25 @@ public class JokeFragment extends Fragment {
         //添加监听事件
         pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                ToastUtils.shortToast(getActivity(), data.get(i-1).getContent());
+            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
+                ToastUtils.shortToast(getActivity(), data.get(i - 1).getContent());
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+//                        .setIcon(R.mipmap.ic_launcher_round)
+//                        .setTitle("笑话")
+//                        .setMessage(data.get(i - 1).getContent())
+//                        .setNegativeButton("取消",null)
+//                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                ShareUtil.showShare(getActivity(),
+//                                        "笑话",
+//                                        "",
+//                                        "http://www.baidu.com",
+//                                        data.get(i - 1).getContent(),
+//                                        "http://cn.bing.com/images/search?view=detailV2&ccid=6pYo%2bb1j&id=7D960B412B1C3BEF36654ADCE10303D50EF90518&thid=OIP.6pYo-b1j5tKuRDbQN3uAMQEsEs&q=%E7%8C%AB%E5%92%AA%E5%90%83%E8%96%84%E8%8D%B7%E6%91%84%E5%BD%B1&simid=608018597215539056&selectedIndex=1&ajaxhist=0");
+//                            }
+//                        });
+//                builder.create().show();
             }
         });
 

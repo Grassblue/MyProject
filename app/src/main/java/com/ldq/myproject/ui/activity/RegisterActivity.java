@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onSuccess() {
                 if (name.equals("") || pwd.equals("")) {
                     ToastUtils.shortToast(RegisterActivity.this, "账户和密码不能为空");
-                } else if (name.length() < 7 || pwd.length() < 7) {
+                } else if (name.length() < 6 || pwd.length() < 6) {
                     ToastUtils.shortToast(RegisterActivity.this, "账户和密码不能小于6位数");
                 } else {
                     ToastUtils.shortToast(RegisterActivity.this, "注册成功");

@@ -1,4 +1,4 @@
-package com.ldq.myproject;
+package com.ldq.myproject.ui.activity;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.ldq.myproject.R;
 import com.ldq.myproject.ui.fragment.JokeFragment;
 import com.ldq.myproject.ui.fragment.NewsFragment;
 import com.ldq.myproject.ui.fragment.PersonFragment;
@@ -23,6 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
+
     @BindView(R.id.content)
     FrameLayout content;
     @BindView(R.id.navigation)

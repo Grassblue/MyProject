@@ -1,9 +1,10 @@
 package com.ldq.myproject.ui.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,9 +12,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ldq.myproject.MainActivity;
 import com.ldq.myproject.R;
+import com.ldq.myproject.bean.UserInfo;
 import com.ldq.myproject.common.Constant;
+import com.ldq.myproject.common.PreferencesManager;
 import com.ldq.myproject.util.ToastUtils;
 
 import java.util.HashMap;
@@ -91,9 +93,15 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
     }
 
     private void login() {
-        String name = loginName.getText().toString();
-        String pwd = loginPassword.getText().toString();
-        BmobUser user = new BmobUser();
+        final String name = loginName.getText().toString();
+        final String pwd = loginPassword.getText().toString();
+
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(pwd)) {
+            ToastUtils.shortToast(LoginActivity.this, "账户或密码不能为空！");
+            return;
+        }
+
+        UserInfo user = new UserInfo();
         user.setUsername(name);
         user.setPassword(pwd);
         user.login(this, new SaveListener() {
@@ -102,11 +110,13 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 ToastUtils.shortToast(LoginActivity.this, "登录成功");
+                saveUserInfo(Constant.LOGIN_TYPE_NORMAL, null);
             }
 
             @Override
             public void onFailure(int i, String s) {
                 ToastUtils.shortToast(LoginActivity.this, "帐号或密码错误");
+                clearInput();
             }
         });
     }
@@ -151,6 +161,32 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
         //移除授权
         //weibo.removeAccount(true);
     }
+
+    private void saveUserInfo(int loginType, BmobUser.BmobThirdUserAuth authInfo) {
+        /*
+         * TODO 把用户的登录信息保存到本地：sp\sqlite：（登录状态，登录类别，登录账户信息）
+         * 注意:为了保证数据安全，一般对数据进行加密
+         * 通过BmobUser user = BmobUser.getCurrentUser(context)获取登录成功后的本地用户信息
+         * 如果是自定义用户对象MyUser，可通过MyUser user = BmobUser.getCurrentUser(context,MyUser.class)获取自定义用户信息
+         * */
+        UserInfo user = BmobUser.getCurrentUser(LoginActivity.this,  UserInfo.class);
+        PreferencesManager preferences = PreferencesManager.getInstance(LoginActivity.this);
+        preferences.put(Constant.IS_LOGIN, true);
+        preferences.put(Constant.LOGINTYPE, loginType);
+        preferences.put(Constant.USER_NAME, user.getUsername());
+        preferences.put(Constant.USER_PHOTO, user.getPhoto());
+        preferences.put(Constant.USER_PWD, loginPassword.getText().toString());
+        if(authInfo != null){
+            preferences.put(authInfo);
+        }
+        LoginActivity.this.finish();
+    }
+
+    private void clearInput() {
+        loginName.setText("");
+        loginPassword.setText("");
+    }
+
 
 
     @Override

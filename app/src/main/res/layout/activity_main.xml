@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ldq.myproject.MainActivity">
+    tools:context="com.ldq.myproject.ui.activity.MainActivity">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/big_textSize"
+                android:textSize="@dimen/middle_textSize"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:maxWidth="200dp"
