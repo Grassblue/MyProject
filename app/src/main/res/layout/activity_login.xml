@@ -16,7 +16,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.1"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <android.support.design.widget.TextInputLayout
@@ -63,6 +63,7 @@
         android:layout_marginTop="150dp"
         android:background="@color/mediumseagreen"
         android:text="@string/login"
+        android:textColor="@color/white"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -78,7 +79,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:onClick="onViewClicked"
-        android:textColor="@color/salmon"
+        android:textColor="@color/colorAccent"
         android:text="@string/forgetPwd"
         app:layout_constraintHorizontal_bias="0.026"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -94,7 +95,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textColor="@color/salmon"
+        android:textColor="@color/colorAccent"
         android:text="@string/newUser"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintLeft_toRightOf="@+id/tv_forget_password"

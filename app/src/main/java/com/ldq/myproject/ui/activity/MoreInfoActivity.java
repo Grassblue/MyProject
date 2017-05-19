@@ -68,7 +68,7 @@ public class MoreInfoActivity extends AppCompatActivity {
     private ArrayList<String> ageItems = new ArrayList<>();
     private ArrayList<String> sexItems = new ArrayList<>();
 
-    private String photoUrl,uname,sex,age,address;
+    private String photoUrl, uname, sex, age, address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +85,8 @@ public class MoreInfoActivity extends AppCompatActivity {
         options3Items = CityDataUtil.getAreData();
     }
 
-    @OnClick({R.id.tr1_photo, R.id.tr2_uname, R.id.tr3_sex, R.id.tr4_age, R.id.tr5_address,R.id.btn_submit})
-    public void onClick(View view) {
+    @OnClick({R.id.tr1_photo, R.id.tr2_uname, R.id.tr3_sex, R.id.tr4_age, R.id.tr5_address, R.id.btn_submit})
+    public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tr1_photo:
                 selectUserIc();
@@ -107,7 +107,6 @@ public class MoreInfoActivity extends AppCompatActivity {
                 break;
         }
     }
-
     private void selectUserIc() {
         ImageConfig imageConfig
                 = new ImageConfig.Builder(new GlideLoader())
@@ -147,7 +146,7 @@ public class MoreInfoActivity extends AppCompatActivity {
     }
 
     private void showAgePickView() {
-        for (int i=1;i<100;i++){
+        for (int i = 1; i < 100; i++) {
             ageItems.add(String.valueOf(i));
         }
         OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
@@ -194,27 +193,28 @@ public class MoreInfoActivity extends AppCompatActivity {
         sex = tvSex.getText().toString();
         age = tvAge.getText().toString();
         address = tvAddress.getText().toString();
-        if(!"".equals(photoUrl) && !"".equals(uname)
+        if (!"".equals(photoUrl) && !"".equals(uname)
                 && !"".equals(sex) && !"".equals(age)
-                && !"".equals(address)){
+                && !"".equals(address)) {
             UserInfo newUser = new UserInfo();
             newUser.setPhoto(photoUrl);
-            newUser.setSex("男".equals(sex)?true:false);
+            newUser.setSex("男".equals(sex) ? true : false);
             newUser.setAge(Integer.valueOf(age));
             newUser.setAddress(address);
             UserInfo bmobUser = BmobUser.getCurrentUser(MoreInfoActivity.this, UserInfo.class);
-            newUser.update(MoreInfoActivity.this,bmobUser.getObjectId(),new UpdateListener() {
+            newUser.update(MoreInfoActivity.this, bmobUser.getObjectId(), new UpdateListener() {
                 @Override
                 public void onSuccess() {
                     // TODO Auto-generated method stub
-                    ToastUtils.shortToast(MoreInfoActivity.this,"更新用户信息成功");
+                    ToastUtils.shortToast(MoreInfoActivity.this, "完善个人信息成功");
                     PreferencesManager.getInstance(MoreInfoActivity.this).put(Constant.USER_PHOTO, photoUrl);
                     MoreInfoActivity.this.finish();
                 }
+
                 @Override
                 public void onFailure(int code, String msg) {
                     // TODO Auto-generated method stub
-                    ToastUtils.shortToast(MoreInfoActivity.this, "更新用户信息失败" + msg);
+                    ToastUtils.shortToast(MoreInfoActivity.this, "完善个人信息失败" + msg);
                 }
             });
         }
@@ -226,11 +226,11 @@ public class MoreInfoActivity extends AppCompatActivity {
         if (requestCode == ImageSelector.IMAGE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             // Get Image Path List
             List<String> pathList = data.getStringArrayListExtra(ImageSelectorActivity.EXTRA_RESULT);
-            if (pathList.size() > 0){
+            if (pathList.size() > 0) {
                 //由于单选只需要回去第一个数据就好,获取图片URL并上传
                 uploadPhotoForURL(pathList.get(0));
-            }else {
-                ToastUtils.shortToast(MoreInfoActivity.this,"选择头像失败");
+            } else {
+                ToastUtils.shortToast(MoreInfoActivity.this, "选择头像失败");
             }
         }
     }

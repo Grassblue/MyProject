@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/person_bg"
     android:fadingEdge="none">
 
@@ -19,7 +19,7 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/transparent_8f"
+            android:background="@color/greenLight"
             android:shrinkColumns="0"
             android:stretchColumns="0">
 
@@ -32,9 +32,9 @@
                     android:id="@+id/img_icon"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
-                    app:civ_border_width = "2dp"
-                    app:civ_border_color = "@color/white"
-                    android:src="@mipmap/ic_photo" />
+                    android:src="@mipmap/ic_photo"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="2dp" />
             </TableRow>
 
             <TableRow
@@ -46,20 +46,26 @@
                     android:id="@+id/tv_uname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@color/white"
-                    android:includeFontPadding="false"
+                    android:textAlignment="center"
                     android:text="HelloHello"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/small_textSize"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:paddingTop="16.0dip">
+
                 <TextView
                     android:id="@+id/tv_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:textAlignment="center"
                     android:text="登录"
-                    android:textSize="@dimen/small_textSize"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/small_textSize" />
             </TableRow>
         </TableLayout>
 

@@ -27,4 +27,8 @@ public class Constant {
 
     public static final int LOGIN_TYPE_NORMAL = 0X001;
     public static final int LOGIN_TYPE_THIRD = 0X002;
+
+    public static final int COLLECTION_TYPE_NEWS = 0X001;
+    public static final int COLLECTION_TYPE_JOKE = 0X002;
+    public static final int COLLECTION_TYPE_PIC = 0X003;
 }

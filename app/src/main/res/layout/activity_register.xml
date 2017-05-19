@@ -59,6 +59,7 @@
         android:layout_marginTop="67dp"
         android:background="@color/mediumseagreen"
         android:text="@string/register"
+        android:textColor="@color/white"
         android:onClick="onViewClicked"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

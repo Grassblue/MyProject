@@ -71,4 +71,5 @@ public class JokeAdapter extends BaseAdapter {
         data.addAll(newData);
         notifyDataSetChanged();
     }
+
 }
