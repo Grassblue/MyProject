@@ -74,6 +74,8 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".ui.activity.MoreInfoActivity" />
+        <activity android:name=".ui.activity.SettingsActivity"></activity>
     </application>
 
 </manifest>

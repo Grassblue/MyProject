@@ -9,6 +9,7 @@ import com.zhy.http.okhttp.log.LoggerInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
+import cn.bmob.v3.Bmob;
 import cn.sharesdk.framework.ShareSDK;
 import okhttp3.OkHttpClient;
 
@@ -17,11 +18,15 @@ import okhttp3.OkHttpClient;
  */
 
 public class BaseApplication extends Application {
+    private static BaseApplication instance = null;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        ShareSDK.initSDK(this);
+        this.instance = (BaseApplication) getApplicationContext();
         initOkHttpUtils();
+        initBmobSDK();
+        initShareSDK();
     }
 
     private void initOkHttpUtils() {
@@ -34,5 +39,17 @@ public class BaseApplication extends Application {
                 //其他配置
                 .build();
         OkHttpUtils.initClient(okHttpClient);
+    }
+
+    private void initBmobSDK() {
+        Bmob.initialize(this,Constant.BMOB_ID);
+    }
+
+    private void initShareSDK() {
+        ShareSDK.initSDK(this);
+    }
+
+    public static synchronized BaseApplication getInstance(){
+        return instance;
     }
 }

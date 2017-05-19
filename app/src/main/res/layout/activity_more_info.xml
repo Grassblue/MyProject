@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/person_bg"
+    android:fadingEdge="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingBottom="60.0dip"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip"
+        android:paddingTop="10.0dip">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8.0dip"
+            android:paddingLeft="1.0dip"
+            android:shrinkColumns="0"
+            android:stretchColumns="0">
+
+            <TableRow
+                android:id="@+id/tr1_photo"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/bg_tablerow"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="头像"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_icon"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    app:civ_border_width = "1dp"
+                    android:layout_marginRight="20dp"
+                    app:civ_border_color = "@color/white"
+                    android:src="@mipmap/ic_photo" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tr2_uname"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/bg_tablerow"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="昵称" />
+
+                <TextView
+                    android:id="@+id/tv_uname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tr3_sex"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/bg_tablerow"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="性别" />
+
+                <TextView
+                    android:id="@+id/tv_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tr4_age"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/bg_tablerow"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="年龄" />
+
+                <TextView
+                    android:id="@+id/tv_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tr5_address"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@mipmap/bg_tablerow"
+                android:paddingBottom="8.0dip"
+                android:paddingTop="8.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="地址" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1" />
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btn_submit"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16.0dp"
+            android:text="提交"/>
+    </LinearLayout>
+
+</ScrollView>

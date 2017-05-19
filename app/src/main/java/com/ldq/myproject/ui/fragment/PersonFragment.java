@@ -12,10 +12,14 @@ import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ldq.myproject.R;
 import com.ldq.myproject.common.Constant;
 import com.ldq.myproject.common.PreferencesManager;
 import com.ldq.myproject.ui.activity.LoginActivity;
+import com.ldq.myproject.ui.activity.MoreInfoActivity;
+import com.ldq.myproject.ui.activity.SettingsActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,7 +84,17 @@ public class PersonFragment extends Fragment {
        }
     }
 
+    //已经登录的话重新获取用户信息
     private void loadUserInfo() {
+        String userPhoto = PreferencesManager.getInstance(getActivity()).get(Constant.USER_PHOTO);
+        String userName = PreferencesManager.getInstance(getActivity()).get(Constant.USER_NAME);
+        tvUname.setText(userName);
+        Glide.get(imgIcon.getContext()).with(imgIcon.getContext())
+                .load(userPhoto)
+                .placeholder(R.mipmap.ic_img_default)
+                .error(R.mipmap.ic_img_fail)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(imgIcon);
     }
 
     @Override
@@ -93,11 +107,15 @@ public class PersonFragment extends Fragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.img_icon:
+                intent = new Intent(getActivity(), MoreInfoActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tv_login:
+                intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tr1_myInfo:
-                intent = new Intent(getActivity(), LoginActivity.class);
+                intent = new Intent(getActivity(), MoreInfoActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tr2_myCollect:
@@ -105,6 +123,8 @@ public class PersonFragment extends Fragment {
             case R.id.tr3_history:
                 break;
             case R.id.tr4_setting:
+                intent = new Intent(getActivity(), SettingsActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tr5_advice:
                 break;
