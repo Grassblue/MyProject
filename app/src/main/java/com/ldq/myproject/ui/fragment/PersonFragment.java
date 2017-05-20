@@ -17,6 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ldq.myproject.R;
 import com.ldq.myproject.common.Constant;
 import com.ldq.myproject.common.PreferencesManager;
+import com.ldq.myproject.ui.activity.CollectionActivity;
 import com.ldq.myproject.ui.activity.LoginActivity;
 import com.ldq.myproject.ui.activity.MoreInfoActivity;
 import com.ldq.myproject.ui.activity.SettingsActivity;
@@ -121,6 +122,8 @@ public class PersonFragment extends Fragment {
                 startActivity(intent);
                 break;
             case R.id.tr2_myCollect:
+                intent = new Intent(getActivity(), CollectionActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tr3_history:
                 break;
@@ -138,9 +141,9 @@ public class PersonFragment extends Fragment {
 
     private void showAppInfo() {
         AlertDialog.Builder builer = new AlertDialog.Builder(getActivity())
-                .setTitle("关于我们")
+                .setTitle(R.string.about_me)
                 .setMessage("开发人:Grassblue\n地址:https://github.com/Grassblue/MyProject")
-                .setPositiveButton("确定", null);
+                .setPositiveButton(R.string.confirm, null);
         builer.create().show();
     }
 

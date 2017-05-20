@@ -80,7 +80,7 @@ public class NewsFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putParcelable("news", data.get(position-1));
+                bundle.putParcelable("news", data.get(position - 1));
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -88,11 +88,11 @@ public class NewsFragment extends Fragment {
 
         pullToRefreshListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long id) {
                 new AlertDialog.Builder(getActivity())
-                        .setTitle("收藏")
-                        .setMessage("是否收藏？")
-                        .setPositiveButton("收藏", new DialogInterface.OnClickListener() {
+                        .setTitle(R.string.collection)
+                        .setMessage(R.string.is_collection)
+                        .setPositiveButton(R.string.collection, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 LoginUtils.checkLogin(true);
@@ -101,12 +101,24 @@ public class NewsFragment extends Fragment {
                                     Collection collection = new Collection();
                                     collection.setuId(userInfo.getObjectId());
                                     collection.setType(Constant.COLLECTION_TYPE_NEWS);
-                                    //collection.setTitle();
-                                    saveCollectionData(collection);
+                                    collection.setUrl(data.get(position-1).getUrl());
+                                    collection.setPicUrl(data.get(position-1).getThumbnail_pic_s());
+                                    collection.setTitle(data.get(position-1).getTitle());
+                                    collection.save(getActivity(), new SaveListener() {
+                                        @Override
+                                        public void onSuccess() {
+                                            ToastUtils.shortToast(getActivity(), getString(R.string.collection_success));
+                                        }
+
+                                        @Override
+                                        public void onFailure(int i, String s) {
+                                            ToastUtils.shortToast(getActivity(), getString(R.string.collection_failure));
+                                        }
+                                    });
                                 }
                             }
                         })
-                        .setNegativeButton("取消", null)
+                        .setNegativeButton(R.string.cancel, null)
                         .create()
                         .show();
                 return true;
@@ -125,20 +137,6 @@ public class NewsFragment extends Fragment {
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 //加载更多
                 getAsyncData(page++, TYPE_LOADMORE);
-            }
-        });
-    }
-
-    private void saveCollectionData(Collection collection) {
-        collection.save(getActivity(), new SaveListener() {
-            @Override
-            public void onSuccess() {
-                ToastUtils.shortToast(getActivity(),"收藏成功!");
-            }
-
-            @Override
-            public void onFailure(int i, String s) {
-                ToastUtils.shortToast(getActivity(),"收藏失败!");
             }
         });
     }
@@ -164,7 +162,7 @@ public class NewsFragment extends Fragment {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        ToastUtils.shortToast(getActivity(), "请求失败");
+                        ToastUtils.shortToast(getActivity(),getString(R.string.request_failure));
                         pullToRefreshListView.onRefreshComplete();
                     }
 
@@ -173,7 +171,7 @@ public class NewsFragment extends Fragment {
                         //停止刷新
                         pullToRefreshListView.onRefreshComplete();
                         //解析数据
-                        NewsResult newsResult = JSON.parseObject(response,NewsResult.class);
+                        NewsResult newsResult = JSON.parseObject(response, NewsResult.class);
                         switch (type) {
                             case TYPE_REFRESH:
                                 newsAdapter.setNewData(newsResult.getResult().getData());

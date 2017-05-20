@@ -1,8 +1,10 @@
 package com.ldq.myproject.ui.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +15,15 @@ import com.alibaba.fastjson.JSON;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.ldq.myproject.R;
+import com.ldq.myproject.bean.Collection;
 import com.ldq.myproject.bean.JokeResult;
 import com.ldq.myproject.bean.JokeResult.ResultBean.Joke;
+import com.ldq.myproject.bean.UserInfo;
+import com.ldq.myproject.common.BaseApplication;
 import com.ldq.myproject.common.Constant;
 import com.ldq.myproject.common.ServerConfig;
 import com.ldq.myproject.ui.adapter.JokeAdapter;
+import com.ldq.myproject.util.LoginUtils;
 import com.ldq.myproject.util.TimeUtils;
 import com.ldq.myproject.util.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -29,6 +35,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.SaveListener;
 import okhttp3.Call;
 
 /**
@@ -82,7 +90,7 @@ public class JokeFragment extends Fragment {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        ToastUtils.shortToast(getActivity(), "请求失败");
+                        ToastUtils.shortToast(getActivity(), getString(R.string.request_failure));
                         pullToRefreshListView.onRefreshComplete();
                     }
 
@@ -116,23 +124,43 @@ public class JokeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 ToastUtils.shortToast(getActivity(), data.get(i - 1).getContent());
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
-//                        .setIcon(R.mipmap.ic_launcher_round)
-//                        .setTitle("笑话")
-//                        .setMessage(data.get(i - 1).getContent())
-//                        .setNegativeButton("取消",null)
-//                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                ShareUtil.showShare(getActivity(),
-//                                        "笑话",
-//                                        "",
-//                                        "http://www.baidu.com",
-//                                        data.get(i - 1).getContent(),
-//                                        "http://cn.bing.com/images/search?view=detailV2&ccid=6pYo%2bb1j&id=7D960B412B1C3BEF36654ADCE10303D50EF90518&thid=OIP.6pYo-b1j5tKuRDbQN3uAMQEsEs&q=%E7%8C%AB%E5%92%AA%E5%90%83%E8%96%84%E8%8D%B7%E6%91%84%E5%BD%B1&simid=608018597215539056&selectedIndex=1&ajaxhist=0");
-//                            }
-//                        });
-//                builder.create().show();
+            }
+        });
+
+        pullToRefreshListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long id) {
+                new AlertDialog.Builder(getActivity())
+                        .setTitle(R.string.collection)
+                        .setMessage(R.string.is_collection)
+                        .setPositiveButton(R.string.collection, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                LoginUtils.checkLogin(true);
+                                UserInfo userInfo = BmobUser.getCurrentUser(BaseApplication.getInstance(), UserInfo.class);
+                                if (userInfo != null) {
+                                    Collection collection = new Collection();
+                                    collection.setuId(userInfo.getObjectId());
+                                    collection.setType(Constant.COLLECTION_TYPE_JOKE);
+                                    collection.setTitle(data.get(position-1).getContent());
+                                    collection.save(getActivity(), new SaveListener() {
+                                        @Override
+                                        public void onSuccess() {
+                                            ToastUtils.shortToast(getActivity(), getString(R.string.collection_success));
+                                        }
+
+                                        @Override
+                                        public void onFailure(int i, String s) {
+                                            ToastUtils.shortToast(getActivity(), getString(R.string.collection_failure));
+                                        }
+                                    });
+                                }
+                            }
+                        })
+                        .setNegativeButton(R.string.cancel, null)
+                        .create()
+                        .show();
+                return true;
             }
         });
 

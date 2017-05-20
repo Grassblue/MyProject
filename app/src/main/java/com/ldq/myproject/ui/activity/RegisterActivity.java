@@ -50,17 +50,18 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onSuccess() {
                 if (name.equals("") || pwd.equals("")) {
-                    ToastUtils.shortToast(RegisterActivity.this, "账户和密码不能为空");
+                    ToastUtils.shortToast(RegisterActivity.this, getString(R.string.name_or_pwd_is_null));
                 } else if (name.length() < 6 || pwd.length() < 6) {
-                    ToastUtils.shortToast(RegisterActivity.this, "账户和密码不能小于6位数");
+                    ToastUtils.shortToast(RegisterActivity.this, getString(R.string.is_illegal));
                 } else {
-                    ToastUtils.shortToast(RegisterActivity.this, "注册成功");
+                    ToastUtils.shortToast(RegisterActivity.this, getString(R.string.register_success));
+                    RegisterActivity.this.finish();
                 }
             }
 
             @Override
             public void onFailure(int i, String s) {
-                ToastUtils.shortToast(RegisterActivity.this, "注册失败");
+                ToastUtils.shortToast(RegisterActivity.this, getString(R.string.register_failure));
             }
         });
     }

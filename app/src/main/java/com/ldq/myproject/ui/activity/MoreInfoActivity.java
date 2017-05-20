@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableRow;
@@ -61,6 +62,10 @@ public class MoreInfoActivity extends AppCompatActivity {
     TableRow tr5Address;
     @BindView(R.id.btn_submit)
     Button btnSubmit;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     private ArrayList<ProvinceBean> options1Items = new ArrayList<>();
     private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
@@ -75,6 +80,10 @@ public class MoreInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_info);
         ButterKnife.bind(this);
+
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        tvTitle.setText(R.string.more_info);
     }
 
     @Override
@@ -121,21 +130,21 @@ public class MoreInfoActivity extends AppCompatActivity {
                 // 开启拍照功能 （默认关闭）
                 .showCamera()
                 // 拍照后存放的图片路径（默认 /temp/picture） （会自动创建）
-                .filePath("/six/Pictures")
+                .filePath("/only/Pictures")
                 .build();
         ImageSelector.open(MoreInfoActivity.this, imageConfig);   // 开启图片选择器
     }
 
     private void showSexPickView() {
-        sexItems.add("男");
-        sexItems.add("女");
+        sexItems.add(getString(R.string.man));
+        sexItems.add(getString(R.string.woman));
         OptionsPickerView pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
                 tvSex.setText(sexItems.get(options1));
             }
         })
-                .setTitleText("选择性别")
+                .setTitleText(getString(R.string.select_sex))
                 .setDividerColor(Color.BLACK)
                 .setTextColorCenter(Color.BLACK) //设置选中项文字颜色
                 .setContentTextSize(20)
@@ -155,7 +164,7 @@ public class MoreInfoActivity extends AppCompatActivity {
                 tvAge.setText(ageItems.get(options1));
             }
         })
-                .setTitleText("选择年龄")
+                .setTitleText(getString(R.string.select_age))
                 .setDividerColor(Color.BLACK)
                 .setTextColorCenter(Color.BLACK) //设置选中项文字颜色
                 .setContentTextSize(20)
@@ -176,7 +185,7 @@ public class MoreInfoActivity extends AppCompatActivity {
                 tvAddress.setText(tx);
             }
         })
-                .setTitleText("选择城市")
+                .setTitleText(getString(R.string.select_city))
                 .setDividerColor(Color.BLACK)
                 .setTextColorCenter(Color.BLACK) //设置选中项文字颜色
                 .setContentTextSize(20)
@@ -193,12 +202,13 @@ public class MoreInfoActivity extends AppCompatActivity {
         sex = tvSex.getText().toString();
         age = tvAge.getText().toString();
         address = tvAddress.getText().toString();
-        if (!"".equals(photoUrl) && !"".equals(uname)
-                && !"".equals(sex) && !"".equals(age)
+        if (!"".equals(photoUrl)
+                && !"".equals(sex)
+                && !"".equals(age)
                 && !"".equals(address)) {
             UserInfo newUser = new UserInfo();
             newUser.setPhoto(photoUrl);
-            newUser.setSex("男".equals(sex) ? true : false);
+            newUser.setSex(getString(R.string.man).equals(sex) ? true : false);
             newUser.setAge(Integer.valueOf(age));
             newUser.setAddress(address);
             UserInfo bmobUser = BmobUser.getCurrentUser(MoreInfoActivity.this, UserInfo.class);
@@ -206,7 +216,7 @@ public class MoreInfoActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess() {
                     // TODO Auto-generated method stub
-                    ToastUtils.shortToast(MoreInfoActivity.this, "完善个人信息成功");
+                    ToastUtils.shortToast(MoreInfoActivity.this, getString(R.string.more_info_success));
                     PreferencesManager.getInstance(MoreInfoActivity.this).put(Constant.USER_PHOTO, photoUrl);
                     MoreInfoActivity.this.finish();
                 }
@@ -214,9 +224,11 @@ public class MoreInfoActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(int code, String msg) {
                     // TODO Auto-generated method stub
-                    ToastUtils.shortToast(MoreInfoActivity.this, "完善个人信息失败" + msg);
+                    ToastUtils.shortToast(MoreInfoActivity.this, getString(R.string.more_info_failure) + msg);
                 }
             });
+        }else{
+            ToastUtils.shortToast(MoreInfoActivity.this,getString(R.string.please_complete_info));
         }
     }
 
@@ -230,7 +242,7 @@ public class MoreInfoActivity extends AppCompatActivity {
                 //由于单选只需要回去第一个数据就好,获取图片URL并上传
                 uploadPhotoForURL(pathList.get(0));
             } else {
-                ToastUtils.shortToast(MoreInfoActivity.this, "选择头像失败");
+                ToastUtils.shortToast(MoreInfoActivity.this, getString(R.string.select_photo_failure));
             }
         }
     }
@@ -241,9 +253,7 @@ public class MoreInfoActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess() {
-                //bmobFile.getFileUrl(context)--返回的上传文件的完整地址
                 photoUrl = bmobFile.getFileUrl(MoreInfoActivity.this);
-                //ImageLoaderUtil.getInstance().displayImageTarget(cimgPhoto, photoUrl);
                 Glide.get(imgIcon.getContext()).with(imgIcon.getContext())
                         .load(photoUrl)
                         .asBitmap()//强制转换Bitmap
@@ -251,17 +261,16 @@ public class MoreInfoActivity extends AppCompatActivity {
                         .error(R.mipmap.ic_img_fail)
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .into(imgIcon);
-                ToastUtils.shortToast(MoreInfoActivity.this, "上传图片成功" + photoUrl);
+                ToastUtils.shortToast(MoreInfoActivity.this, getString(R.string.upload_photo_success) + photoUrl);
             }
 
             @Override
             public void onProgress(Integer value) {
-                // 返回的上传进度（百分比）
             }
 
             @Override
             public void onFailure(int code, String msg) {
-                ToastUtils.shortToast(MoreInfoActivity.this, "上传图片失败" + msg);
+                ToastUtils.shortToast(MoreInfoActivity.this, getString(R.string.upload_photo_failure) + msg);
             }
         });
     }
