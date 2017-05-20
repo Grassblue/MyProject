@@ -1,9 +1,11 @@
 package com.ldq.myproject.ui.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import com.ldq.myproject.bean.PictureResult.ShowapiResBodyBean.PagebeanBean.Pict
 import com.ldq.myproject.common.Constant;
 import com.ldq.myproject.common.ServerConfig;
 import com.ldq.myproject.ui.adapter.PictureAdapter;
+import com.ldq.myproject.util.LoginUtils;
 import com.ldq.myproject.util.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -67,6 +70,12 @@ public class PictureFragment extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
                 page = 1;
                 getAsyncData(page);
+            }
+        });
+
+        pictureAdapter.setOnItemLongClickListener(new PictureAdapter.OnItemLongClickListener() {
+            @Override
+            public void onLongClick(int position) {
             }
         });
     }

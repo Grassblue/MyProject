@@ -35,7 +35,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder myViewHolder, int position) {
+    public void onBindViewHolder(MyViewHolder myViewHolder, final int position) {
         //加载网络图片
         Glide.with(context)
                 .load(data.get(position).getList().get(0).getBig())
@@ -45,6 +45,15 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.MyViewHo
                 .crossFade()
                 .into(holder.imageView);
         holder.tv_title.setText(data.get(position).getTitle());
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (onItemLongClickListener != null)
+                    onItemLongClickListener.onLongClick(position);
+                //返回false会在长安结束后继续点击
+                return true;
+            }
+        });
     }
 
     @Override
@@ -56,10 +65,21 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.MyViewHo
         ImageView imageView;
         TextView tv_title;
 
-        public MyViewHolder(View view) {
-            super(view);
-            imageView = (ImageView) view.findViewById(R.id.imageView);
-            tv_title = (TextView) view.findViewById(R.id.tv_title);
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            imageView = (ImageView) itemView.findViewById(R.id.imageView);
+            tv_title = (TextView) itemView.findViewById(R.id.tv_title);
         }
+    }
+
+    //    长按点击事件
+    public interface OnItemLongClickListener {
+        void onLongClick(int position);
+    }
+
+    OnItemLongClickListener onItemLongClickListener;
+
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
     }
 }

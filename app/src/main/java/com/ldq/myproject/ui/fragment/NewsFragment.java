@@ -1,9 +1,11 @@
 package com.ldq.myproject.ui.fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +16,16 @@ import com.alibaba.fastjson.JSON;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.ldq.myproject.R;
+import com.ldq.myproject.bean.Collection;
 import com.ldq.myproject.bean.NewsResult;
 import com.ldq.myproject.bean.NewsResult.ResultBean.News;
+import com.ldq.myproject.bean.UserInfo;
+import com.ldq.myproject.common.BaseApplication;
 import com.ldq.myproject.common.Constant;
 import com.ldq.myproject.common.ServerConfig;
 import com.ldq.myproject.ui.activity.NewsDetailActivity;
 import com.ldq.myproject.ui.adapter.NewsAdapter;
+import com.ldq.myproject.util.LoginUtils;
 import com.ldq.myproject.util.ToastUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -30,6 +36,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.SaveListener;
 import okhttp3.Call;
 
 /**
@@ -78,6 +86,33 @@ public class NewsFragment extends Fragment {
             }
         });
 
+        pullToRefreshListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("收藏")
+                        .setMessage("是否收藏？")
+                        .setPositiveButton("收藏", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                LoginUtils.checkLogin(true);
+                                UserInfo userInfo = BmobUser.getCurrentUser(BaseApplication.getInstance(), UserInfo.class);
+                                if (userInfo != null) {
+                                    Collection collection = new Collection();
+                                    collection.setuId(userInfo.getObjectId());
+                                    collection.setType(Constant.COLLECTION_TYPE_NEWS);
+                                    //collection.setTitle();
+                                    saveCollectionData(collection);
+                                }
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .create()
+                        .show();
+                return true;
+            }
+        });
+
         pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
@@ -90,6 +125,20 @@ public class NewsFragment extends Fragment {
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 //加载更多
                 getAsyncData(page++, TYPE_LOADMORE);
+            }
+        });
+    }
+
+    private void saveCollectionData(Collection collection) {
+        collection.save(getActivity(), new SaveListener() {
+            @Override
+            public void onSuccess() {
+                ToastUtils.shortToast(getActivity(),"收藏成功!");
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                ToastUtils.shortToast(getActivity(),"收藏失败!");
             }
         });
     }

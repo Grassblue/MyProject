@@ -11,4 +11,7 @@
     <string name="person">我的</string>
     <string name="forgetPwd">忘记密码？</string>
     <string name="newUser">新用户注册</string>
+
+    <string name="auto_login_failed">自动登录失败</string>
+    <string name="auto_login_third_failed">第三方自动登录失败:</string>
 </resources>
